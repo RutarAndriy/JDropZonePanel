@@ -1,0 +1,9 @@
+В програмі NetBeans стандартні іконки зберігаються у наступному файлі:
+
+    NetBeans/netbeans/java/modules/org-netbeans-modules-form.jar
+
+Ікони містяться в таких директоріях:
+
+    org/netbeans/modules/form/beaninfo/
+    org/netbeans/modules/form/resources/palette/
+
