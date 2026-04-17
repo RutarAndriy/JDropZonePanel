@@ -110,19 +110,50 @@
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
         <version>${maven.jar.version}</version>
-        <configuration>
-          <archive>
-            <manifest>
-              <addClasspath>false</addClasspath>
-              <mainClass>${app.mainClass}</mainClass>
-            </manifest>
-            <manifestEntries>
-                <Version>${project.version}</Version>
-                <Build-Date>${maven.local.build.time}</Build-Date>
-                <Author>Rutar Andriy</Author>
-            </manifestEntries>
-          </archive>
-        </configuration>
+        <executions>
+          <!-- Збирання jar-бібліотеки -->
+          <execution>
+            <id>default-jar</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+            <configuration>
+              <archive>
+                <manifest>
+                  <addClasspath>false</addClasspath>
+                </manifest>
+                <manifestEntries>
+                    <Version>${project.version}</Version>
+                    <Build-Date>${maven.local.build.time}</Build-Date>
+                    <Author>Rutar Andriy</Author>
+                </manifestEntries>
+              </archive>
+              <excludes>
+                <exclude>**/*Demo.class</exclude>
+                <exclude>**/*Demo$*.class</exclude>
+              </excludes>
+            </configuration>
+          </execution>
+          <!-- Збирання базового demo-шаблону -->
+          <execution>
+            <id>demo-jar</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+            <configuration>
+              <classifier>demo</classifier>
+              <includes>
+                <include>**/*Demo.class</include>
+                <include>**/*Demo$*.class</include>
+              </includes>
+              <archive>
+                <addMavenDescriptor>false</addMavenDescriptor>
+              </archive>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
       <!-- Плагін для збирання jar-файлу із залежностями -->
       <plugin>
@@ -135,11 +166,18 @@
           <shadedArtifactAttached>true</shadedArtifactAttached>
           <!-- Додавання суфіксу -->
           <shadedClassifierName>demo</shadedClassifierName>
+          <!-- Додавання інформації про головний клас -->
           <transformers>
             <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
               <mainClass>${app.mainClass}</mainClass>
             </transformer>
           </transformers>
+          <!-- Додавання базового demo-шаблону -->
+          <extraJars>
+            <extraJar>
+              ${project.build.directory}/${project.artifactId}-${project.version}-demo.jar
+            </extraJar>
+          </extraJars>
           <!-- Фільтрування файлів -->
           <filters>
             <!-- Вилучення системних maven-файлів -->
@@ -219,6 +257,9 @@
         <version>${maven.javadoc.version}</version>
         <configuration>
           <doclint>-missing</doclint>
+          <sourceFileExcludes>
+            <excude>**/*Demo.java</excude>
+          </sourceFileExcludes>
         </configuration>
         <executions>
           <execution>
