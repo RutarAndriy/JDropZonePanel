@@ -364,6 +364,7 @@ public void setExtraType (int extraType) {
              btn_select.setVisible(false);
              pnl_comp.setVisible(false); } }
     
+    vflr_gap.setVisible(extraType == EXTRA_TYPE_TEXT_AND_BUTTON);
     setExtraButtonText(getExtraButtonText());
     pnl_comp.revalidate();
     repaint();
@@ -560,6 +561,7 @@ public static BasicStroke createBasicStroke (float width, float ... pattern)
 
     pnl_comp = new JPanel();
     lbl_info = new JLabel();
+    vflr_gap = new Box.Filler(new Dimension(0, 15), new Dimension(0, 15), new Dimension(32767, 15));
     btn_select = new JButton();
 
     setBorder(passiveBorder);
@@ -575,20 +577,17 @@ public static BasicStroke createBasicStroke (float width, float ... pattern)
     GroupLayout pnl_compLayout = new GroupLayout(pnl_comp);
     pnl_comp.setLayout(pnl_compLayout);
     pnl_compLayout.setHorizontalGroup(pnl_compLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-      .addGroup(pnl_compLayout.createSequentialGroup()
-        .addGap(0, 0, 0)
-        .addGroup(pnl_compLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-          .addComponent(btn_select, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(lbl_info, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        .addGap(0, 0, 0))
+      .addComponent(lbl_info, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      .addComponent(vflr_gap, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      .addComponent(btn_select, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
     pnl_compLayout.setVerticalGroup(pnl_compLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
       .addGroup(pnl_compLayout.createSequentialGroup()
-        .addGap(0, 0, 0)
         .addComponent(lbl_info)
-        .addGap(5, 5, 5)
-        .addComponent(btn_select)
-        .addGap(0, 0, 0))
+        .addGap(0, 0, 0)
+        .addComponent(vflr_gap, GroupLayout.PREFERRED_SIZE, 3, GroupLayout.PREFERRED_SIZE)
+        .addGap(0, 0, 0)
+        .addComponent(btn_select, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
     GroupLayout layout = new GroupLayout(this);
@@ -649,6 +648,7 @@ private final DropTargetListener dropTargetListener = new DropTargetAdapter() {
   private JButton btn_select;
   private JLabel lbl_info;
   private JPanel pnl_comp;
+  private Box.Filler vflr_gap;
   // End of variables declaration//GEN-END:variables
 
 // Кінець класу JDropZonePanel ================================================
