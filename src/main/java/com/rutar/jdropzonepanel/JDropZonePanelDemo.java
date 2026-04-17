@@ -37,14 +37,12 @@ public static void main (String args[]) {
     // Правила оформлення проектів описані тут:
     // https://github.com/RutarAndriy/My_Coding_Rules
 
-    EventQueue.invokeLater(() -> {
-        var window = new JDropZonePanelDemo();
-        window.setMinimumSize(window.getSize());
-        window.setSize(window.getWidth() + 144, window.getHeight());
+    SwingUtilities.invokeLater(() ->
+      { var window = new JDropZonePanelDemo();
         window.setLocationRelativeTo(null);
         window.setVisible(true);
-    });
-}
+        SwingUtilities.invokeLater(() ->
+          { window.setMinimumSize(window.getSize()); }); }); }
 
 // ============================================================================
 /// Генерування випадкового кольору
@@ -519,7 +517,7 @@ private void initAppIcons() {
     layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
       .addGroup(layout.createSequentialGroup()
         .addGap(5, 5, 5)
-        .addComponent(dzp_main, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(dzp_main, GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
         .addGap(5, 5, 5)
         .addComponent(pnl_control, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         .addGap(5, 5, 5))
