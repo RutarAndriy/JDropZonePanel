@@ -4,11 +4,10 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="JDropZonePanel Demo"/>
-    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -25,20 +24,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-              <Component id="cmp_face" min="-2" pref="209" max="-2" attributes="0"/>
+              <Component id="dzp_main" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lbl_lineWidth" max="32767" attributes="0"/>
-                  <Component id="sld_lineWidth" alignment="1" max="32767" attributes="0"/>
-                  <Component id="btn_bColor" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btn_fColor" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btn_smileType" max="32767" attributes="0"/>
-                  <Component id="sld_smileWidth" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btn_reset" alignment="0" pref="261" max="32767" attributes="0"/>
-                  <Component id="lbl_smileWidth" alignment="0" max="32767" attributes="0"/>
-              </Group>
+              <Component id="pnl_control" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -47,113 +37,453 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="lbl_lineWidth" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="sld_lineWidth" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="lbl_smileWidth" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="sld_smileWidth" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="btn_smileType" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="btn_fColor" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="btn_bColor" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="btn_reset" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="cmp_face" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="pnl_control" min="-2" max="-2" attributes="0"/>
+                  <Component id="dzp_main" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="com.rutar.jdropzonepanel.JDropZonePanel" name="cmp_face">
+    <Component class="com.rutar.jdropzonepanel.JDropZonePanel" name="dzp_main">
       <Events>
-        <EventHandler event="smileTypeChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onSmileTypeChange"/>
-        <EventHandler event="smileWidthChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onSmileWidthChange"/>
-        <EventHandler event="lineWidthChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onLineWidthChange"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="updateToolTips();"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbl_lineWidth">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="&#x422;&#x43e;&#x432;&#x449;&#x438;&#x43d;&#x430; &#x43b;&#x456;&#x43d;&#x456;&#x439;"/>
-        <Property name="alignmentX" type="float" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Component.LEFT_ALIGNMENT" type="code"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JSlider" name="sld_lineWidth">
-      <Properties>
-        <Property name="maximum" type="int" value="18"/>
-        <Property name="minimum" type="int" value="1"/>
-        <Property name="value" type="int" value="5"/>
-        <Property name="alignmentX" type="float" value="0.0"/>
-      </Properties>
-      <Events>
-        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="onStateChange"/>
+        <EventHandler event="enableDaDChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>
+        <EventHandler event="dragSimulateChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>
+        <EventHandler event="enableAntialiasChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>
+        <EventHandler event="firstLinesTypeDrawChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>
+        <EventHandler event="secondtLinesTypeDrawChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>
+        <EventHandler event="firstLinesTypeColorChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>
+        <EventHandler event="secondLinesTypeColorChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>
+        <EventHandler event="firstLinesTypeStrokeChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>
+        <EventHandler event="secondLinesTypeStrokeChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>
+        <EventHandler event="activeBorderChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>
+        <EventHandler event="passiveBorderChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>
+        <EventHandler event="linesStepChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>
+        <EventHandler event="linesIndentChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>
+        <EventHandler event="extraTypeChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>
+        <EventHandler event="extraLabelTextChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>
+        <EventHandler event="extraButtonTextChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>
+        <EventHandler event="extraAutoEditTextChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>
+        <EventHandler event="extraIndentChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbl_smileWidth">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="&#x428;&#x438;&#x440;&#x438;&#x43d;&#x430; &#x443;&#x441;&#x43c;&#x456;&#x448;&#x43a;&#x438;"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JSlider" name="sld_smileWidth">
-      <Properties>
-        <Property name="maximum" type="int" value="175"/>
-        <Property name="value" type="int" value="120"/>
-        <Property name="alignmentX" type="float" value="0.0"/>
-      </Properties>
-      <Events>
-        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="onStateChange"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btn_smileType">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#x423;&#x441;&#x43c;&#x456;&#x448;&#x43a;&#x430; / &#x413;&#x440;&#x438;&#x43c;&#x430;&#x441;&#x430;"/>
-        <Property name="actionCommand" type="java.lang.String" value="smile"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onButtonClick"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btn_fColor">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#x417;&#x43c;&#x456;&#x43d;&#x438;&#x442;&#x438; &#x43a;&#x43e;&#x43b;&#x456;&#x440; &#x43b;&#x456;&#x43d;&#x456;&#x439;"/>
-        <Property name="actionCommand" type="java.lang.String" value="fColor"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onButtonClick"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btn_bColor">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#x417;&#x43c;&#x456;&#x43d;&#x438;&#x442;&#x438; &#x43a;&#x43e;&#x43b;&#x456;&#x440; &#x444;&#x43e;&#x43d;&#x443;"/>
-        <Property name="actionCommand" type="java.lang.String" value="bColor"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onButtonClick"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btn_reset">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#x412;&#x456;&#x434;&#x43d;&#x43e;&#x432;&#x438;&#x442;&#x438; &#x441;&#x442;&#x430;&#x43d;&#x434;&#x430;&#x440;&#x442;&#x43d;&#x456; &#x43d;&#x430;&#x43b;&#x430;&#x448;&#x442;&#x443;&#x432;&#x430;&#x43d;&#x43d;&#x44f;"/>
-        <Property name="actionCommand" type="java.lang.String" value="reset"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onButtonClick"/>
-      </Events>
-    </Component>
+    <Container class="javax.swing.JPanel" name="pnl_control">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="sld_linesStep" alignment="0" max="32767" attributes="0"/>
+              <Component id="lbl_linesWidth" alignment="0" max="32767" attributes="0"/>
+              <Component id="sld_linesWidth" alignment="0" max="32767" attributes="0"/>
+              <Component id="pnl_linesVisibility" alignment="0" max="32767" attributes="0"/>
+              <Component id="pnl_linesColors" alignment="0" max="32767" attributes="0"/>
+              <Component id="pnl_linesStrokes" alignment="0" max="32767" attributes="0"/>
+              <Component id="sp_linesStrokes" alignment="0" max="32767" attributes="0"/>
+              <Component id="lbl_bordersWidth" alignment="0" max="32767" attributes="0"/>
+              <Component id="sld_bordersWidth" alignment="0" max="32767" attributes="0"/>
+              <Component id="pnl_bordersColors" alignment="0" max="32767" attributes="0"/>
+              <Component id="pnl_bordersStrokes" alignment="0" max="32767" attributes="0"/>
+              <Component id="sp_bordersStrokes" alignment="0" max="32767" attributes="0"/>
+              <Component id="lbl_extraGap" alignment="0" max="32767" attributes="0"/>
+              <Component id="sld_extraGap" alignment="0" max="32767" attributes="0"/>
+              <Component id="cb_extraType" alignment="0" max="32767" attributes="0"/>
+              <Component id="btn_simulate" alignment="0" max="32767" attributes="0"/>
+              <Component id="fld_labelText" alignment="0" max="32767" attributes="0"/>
+              <Component id="lbl_linesStep" alignment="0" max="32767" attributes="0"/>
+              <Component id="fld_buttonText" max="32767" attributes="0"/>
+              <Component id="btn_autoEditText" alignment="0" max="32767" attributes="0"/>
+              <Component id="sp_buttonText" max="32767" attributes="0"/>
+              <Component id="btn_activeDaD" alignment="1" max="32767" attributes="0"/>
+              <Component id="lbl_linesIndent" alignment="0" max="32767" attributes="0"/>
+              <Component id="sld_linesIndent" alignment="0" max="32767" attributes="0"/>
+              <Component id="btn_antialias" alignment="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="lbl_linesStep" min="-2" pref="16" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="sld_linesStep" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="lbl_linesWidth" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="sld_linesWidth" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="lbl_linesIndent" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="sld_linesIndent" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="pnl_linesVisibility" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="pnl_linesColors" min="-2" pref="29" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="pnl_linesStrokes" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="btn_antialias" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="sp_linesStrokes" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lbl_bordersWidth" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="sld_bordersWidth" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="pnl_bordersColors" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="pnl_bordersStrokes" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="sp_bordersStrokes" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="lbl_extraGap" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="sld_extraGap" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="cb_extraType" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="fld_labelText" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="fld_buttonText" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="sp_buttonText" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="btn_autoEditText" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="btn_activeDaD" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Component id="btn_simulate" min="-2" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lbl_linesStep">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="&#x41a;&#x440;&#x43e;&#x43a; &#x43b;&#x456;&#x43d;&#x456;&#x439; &#x432;&#x456;&#x437;&#x435;&#x440;&#x443;&#x43d;&#x43a;&#x443;: 0px"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSlider" name="sld_linesStep">
+          <Properties>
+            <Property name="maximum" type="int" value="99"/>
+            <Property name="minimum" type="int" value="3"/>
+            <Property name="minorTickSpacing" type="int" value="1"/>
+            <Property name="snapToTicks" type="boolean" value="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="onSliderChange"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="sld_linesStep.setValue(dzp_main.getLinesStep());&#xd;&#xa;updateLabels(sld_linesStep);"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_linesWidth">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="&#x422;&#x43e;&#x432;&#x449;&#x438;&#x43d;&#x430; &#x43b;&#x456;&#x43d;&#x456;&#x439; &#x432;&#x456;&#x437;&#x435;&#x440;&#x443;&#x43d;&#x43a;&#x443;: 0px"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSlider" name="sld_linesWidth">
+          <Properties>
+            <Property name="majorTickSpacing" type="int" value="5"/>
+            <Property name="maximum" type="int" value="30"/>
+            <Property name="minimum" type="int" value="1"/>
+            <Property name="minorTickSpacing" type="int" value="1"/>
+            <Property name="snapToTicks" type="boolean" value="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="onSliderChange"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="var stroke = dzp_main.getFirstLinesTypeStroke();&#xd;&#xa;sld_linesWidth.setValue((int)stroke.getLineWidth());&#xd;&#xa;updateLabels(sld_linesWidth);"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_linesIndent">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="&#x412;&#x456;&#x434;&#x441;&#x442;&#x443;&#x43f; &#x43b;&#x456;&#x43d;&#x456;&#x439; &#x432;&#x456;&#x437;&#x435;&#x440;&#x443;&#x43d;&#x43a;&#x443;: 0px"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSlider" name="sld_linesIndent">
+          <Properties>
+            <Property name="majorTickSpacing" type="int" value="1"/>
+            <Property name="maximum" type="int" value="30"/>
+          </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="onSliderChange"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="sld_linesIndent.setValue(dzp_main.getLinesIndent());&#xd;&#xa;updateLabels(sld_linesIndent);"/>
+          </AuxValues>
+        </Component>
+        <Container class="javax.swing.JPanel" name="pnl_linesVisibility">
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+            <Property name="columns" type="int" value="0"/>
+            <Property name="horizontalGap" type="int" value="3"/>
+            <Property name="rows" type="int" value="1"/>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JToggleButton" name="btn_fVisible">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x41b;&#x456;&#x43d;&#x456;&#x457; I &#x442;&#x438;&#x43f;&#x443; &#x2205;"/>
+                <Property name="actionCommand" type="java.lang.String" value="fLineVisible"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onButtonPress"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JToggleButton" name="btn_sVisible">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x41b;&#x456;&#x43d;&#x456;&#x457; II &#x442;&#x438;&#x43f;&#x443; &#x2205;"/>
+                <Property name="actionCommand" type="java.lang.String" value="sLineVisible"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onButtonPress"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="pnl_linesColors">
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+            <Property name="columns" type="int" value="0"/>
+            <Property name="horizontalGap" type="int" value="3"/>
+            <Property name="rows" type="int" value="1"/>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="btn_fColor">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x41a;&#x43e;&#x43b;&#x456;&#x440; &#x43b;&#x456;&#x43d;&#x456;&#x439; I &#x442;&#x438;&#x43f;&#x443;"/>
+                <Property name="actionCommand" type="java.lang.String" value="fLineColor"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onButtonPress"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btn_sColor">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x41a;&#x43e;&#x43b;&#x456;&#x440; &#x43b;&#x456;&#x43d;&#x456;&#x439; II &#x442;&#x438;&#x43f;&#x443;"/>
+                <Property name="actionCommand" type="java.lang.String" value="sLineColor"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onButtonPress"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="pnl_linesStrokes">
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+            <Property name="columns" type="int" value="0"/>
+            <Property name="horizontalGap" type="int" value="3"/>
+            <Property name="rows" type="int" value="1"/>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="btn_fStroke">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x428;&#x442;&#x440;&#x438;&#x445;&#x443;&#x432;&#x430;&#x43d;&#x43d;&#x44f; &#x43b;&#x456;&#x43d;&#x456;&#x439; I &#x442;&#x438;&#x43f;&#x443;"/>
+                <Property name="actionCommand" type="java.lang.String" value="fLineStroke"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onButtonPress"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btn_sStroke">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x428;&#x442;&#x440;&#x438;&#x445;&#x443;&#x432;&#x430;&#x43d;&#x43d;&#x44f; &#x43b;&#x456;&#x43d;&#x456;&#x439; II &#x442;&#x438;&#x43f;&#x443;"/>
+                <Property name="actionCommand" type="java.lang.String" value="sLineStroke"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onButtonPress"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JToggleButton" name="btn_antialias">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x417;&#x433;&#x43b;&#x430;&#x434;&#x438;&#x442;&#x438; &#x43b;&#x456;&#x43d;&#x456;&#x457; &#x432;&#x456;&#x437;&#x435;&#x440;&#x443;&#x43d;&#x43a;&#x443;"/>
+            <Property name="actionCommand" type="java.lang.String" value="antialias"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onButtonPress"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JSeparator" name="sp_linesStrokes">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_bordersWidth">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="&#x422;&#x43e;&#x432;&#x449;&#x438;&#x43d;&#x430; &#x440;&#x430;&#x43c;&#x43e;&#x43a;: 0px"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSlider" name="sld_bordersWidth">
+          <Properties>
+            <Property name="maximum" type="int" value="9"/>
+            <Property name="minimum" type="int" value="1"/>
+            <Property name="minorTickSpacing" type="int" value="1"/>
+            <Property name="snapToTicks" type="boolean" value="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="onSliderChange"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="sld_bordersWidth.setValue(((LineBorder)dzp_main.getActiveBorder()).getThickness());&#xd;&#xa;updateLabels(sld_bordersWidth);"/>
+          </AuxValues>
+        </Component>
+        <Container class="javax.swing.JPanel" name="pnl_bordersColors">
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+            <Property name="columns" type="int" value="0"/>
+            <Property name="horizontalGap" type="int" value="3"/>
+            <Property name="rows" type="int" value="1"/>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="btn_aBorderColor">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x41a;&#x43e;&#x43b;&#x456;&#x440; &#x430;&#x43a;&#x442;&#x438;&#x432;&#x43d;&#x43e;&#x457; &#x440;&#x430;&#x43c;&#x43a;&#x438;"/>
+                <Property name="actionCommand" type="java.lang.String" value="aBorderColor"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onButtonPress"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btn_pBorderColor">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x41a;&#x43e;&#x43b;&#x456;&#x440; &#x43d;&#x435;&#x430;&#x43a;&#x442;&#x438;&#x432;&#x43d;&#x43e;&#x457; &#x440;&#x430;&#x43c;&#x43a;&#x438;"/>
+                <Property name="actionCommand" type="java.lang.String" value="pBorderColor"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onButtonPress"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="pnl_bordersStrokes">
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+            <Property name="columns" type="int" value="0"/>
+            <Property name="horizontalGap" type="int" value="3"/>
+            <Property name="rows" type="int" value="1"/>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="btn_aBorderStroke">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x428;&#x442;&#x440;&#x438;&#x445;&#x443;&#x432;&#x430;&#x43d;&#x43d;&#x44f; &#x430;&#x43a;&#x442;&#x438;&#x432;&#x43d;&#x43e;&#x457; &#x440;&#x430;&#x43c;&#x43a;&#x438;"/>
+                <Property name="actionCommand" type="java.lang.String" value="aBorderStroke"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onButtonPress"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btn_pBorderStroke">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x428;&#x442;&#x440;&#x438;&#x445;&#x443;&#x432;&#x430;&#x43d;&#x43d;&#x44f; &#x43d;&#x435;&#x430;&#x43a;&#x442;&#x438;&#x432;&#x43d;&#x43e;&#x457; &#x440;&#x430;&#x43c;&#x43a;&#x438;"/>
+                <Property name="actionCommand" type="java.lang.String" value="pBorderStroke"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onButtonPress"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JSeparator" name="sp_bordersStrokes">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_extraGap">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="&#x412;&#x456;&#x434;&#x441;&#x442;&#x443;&#x43f; &#x434;&#x43e;&#x43f;&#x43e;&#x43c;&#x456;&#x436;&#x43d;&#x438;&#x445; &#x43a;&#x43e;&#x43c;&#x43f;&#x43e;&#x43d;&#x435;&#x43d;&#x442;&#x456;&#x432;: 0px"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSlider" name="sld_extraGap">
+          <Properties>
+            <Property name="majorTickSpacing" type="int" value="5"/>
+            <Property name="maximum" type="int" value="30"/>
+            <Property name="minorTickSpacing" type="int" value="1"/>
+            <Property name="snapToTicks" type="boolean" value="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="onSliderChange"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="sld_extraGap.setValue(dzp_main.getExtraIndent());&#xd;&#xa;updateLabels(sld_extraGap);"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cb_extraType">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="&#x412;&#x456;&#x434;&#x43e;&#x431;&#x440;&#x430;&#x436;&#x430;&#x442;&#x438; &#x456;&#x43d;&#x444;&#x43e;&#x440;&#x43c;&#x430;&#x446;&#x456;&#x439;&#x43d;&#x443; &#x43f;&#x456;&#x434;&#x43a;&#x430;&#x437;&#x43a;&#x443; &#x456; &#x43a;&#x43d;&#x43e;&#x43f;&#x43a;&#x443; &#x432;&#x438;&#x431;&#x43e;&#x440;&#x443; &#x444;&#x430;&#x439;&#x43b;&#x456;&#x432;"/>
+                <StringItem index="1" value="&#x412;&#x456;&#x434;&#x43e;&#x431;&#x440;&#x430;&#x436;&#x430;&#x442;&#x438; &#x43b;&#x438;&#x448;&#x435; &#x456;&#x43d;&#x444;&#x43e;&#x440;&#x43c;&#x430;&#x446;&#x456;&#x439;&#x43d;&#x443; &#x43f;&#x456;&#x434;&#x43a;&#x430;&#x437;&#x43a;&#x443;"/>
+                <StringItem index="2" value="&#x412;&#x456;&#x434;&#x43e;&#x431;&#x440;&#x430;&#x436;&#x430;&#x442;&#x438; &#x43b;&#x438;&#x448;&#x435; &#x43a;&#x43d;&#x43e;&#x43f;&#x43a;&#x443; &#x432;&#x438;&#x431;&#x43e;&#x440;&#x443; &#x444;&#x430;&#x439;&#x43b;&#x456;&#x432;"/>
+                <StringItem index="3" value="&#x41d;&#x435; &#x432;&#x456;&#x434;&#x43e;&#x431;&#x440;&#x430;&#x436;&#x430;&#x442;&#x438; &#x456;&#x43d;&#x444;&#x43e;&#x440;&#x43c;&#x430;&#x446;&#x456;&#x439;&#x43d;&#x443; &#x43f;&#x456;&#x434;&#x43a;&#x430;&#x437;&#x43a;&#x443; &#x442;&#x430; &#x43a;&#x43d;&#x43e;&#x43f;&#x43a;&#x443; &#x432;&#x438;&#x431;&#x43e;&#x440;&#x443; &#x444;&#x430;&#x439;&#x43b;&#x456;&#x432;"/>
+              </StringArray>
+            </Property>
+            <Property name="actionCommand" type="java.lang.String" value="cb_components_type"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onExtraTypeSelect"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="((JLabel)cb_extraType.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);&#xa;"/>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="fld_labelText">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="dzp_main.getExtraLabelText()" type="code"/>
+            </Property>
+            <Property name="actionCommand" type="java.lang.String" value="fld_label_text"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="var docOne = fld_labelText.getDocument();&#xa;docOne.putProperty(&quot;owner&quot;, fld_labelText);&#xa;docOne.addDocumentListener(documentListener);&#xa;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="fld_buttonText">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="dzp_main.getExtraButtonText()" type="code"/>
+            </Property>
+            <Property name="actionCommand" type="java.lang.String" value="fld_button_text"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="var docTwo = fld_buttonText.getDocument();&#xa;docTwo.putProperty(&quot;owner&quot;, fld_buttonText);&#xa;docTwo.addDocumentListener(documentListener);&#xa;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JSeparator" name="sp_buttonText">
+        </Component>
+        <Component class="javax.swing.JToggleButton" name="btn_autoEditText">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x410;&#x432;&#x442;&#x43e;&#x43c;&#x430;&#x442;&#x438;&#x447;&#x43d;&#x435; &#x440;&#x435;&#x434;&#x430;&#x433;&#x443;&#x432;&#x430;&#x43d;&#x43d;&#x44f; &#x442;&#x435;&#x43a;&#x441;&#x442;&#x443; &#x43a;&#x43d;&#x43e;&#x43f;&#x43a;&#x438; &#x432;&#x438;&#x431;&#x43e;&#x440;&#x443; &#x444;&#x430;&#x439;&#x43b;&#x456;&#x432; &#x443;&#x432;&#x456;&#x43c;&#x43a;&#x43d;&#x435;&#x43d;&#x435;"/>
+            <Property name="actionCommand" type="java.lang.String" value="autoEditText"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onButtonPress"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JToggleButton" name="btn_activeDaD">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x41f;&#x435;&#x440;&#x435;&#x442;&#x44f;&#x433;&#x443;&#x432;&#x430;&#x43d;&#x43d;&#x44f; &#x434;&#x43e;&#x441;&#x442;&#x443;&#x43f;&#x43d;&#x435;"/>
+            <Property name="actionCommand" type="java.lang.String" value="activeDaD"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onButtonPress"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JToggleButton" name="btn_simulate">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x406;&#x43c;&#x456;&#x442;&#x443;&#x432;&#x430;&#x442;&#x438; &#x43f;&#x435;&#x440;&#x435;&#x442;&#x44f;&#x433;&#x443;&#x432;&#x430;&#x43d;&#x43d;&#x44f;"/>
+            <Property name="actionCommand" type="java.lang.String" value="simulate"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onButtonPress"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

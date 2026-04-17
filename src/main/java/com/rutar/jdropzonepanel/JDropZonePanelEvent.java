@@ -13,7 +13,7 @@ private final Object oldValue;                    // старе значення
 private final Object newValue;                     // нове значення властивості
 
 /// Ідентифікатор події користувацького компонента
-public static int JDROPZONEPANEL_EVENT = AWTEvent.RESERVED_ID_MAX + 333;
+public static int JDROPZONEPANEL_EVENT = AWTEvent.RESERVED_ID_MAX + 331;
 
 // ============================================================================
 /// Конструктор за замовчуванням
@@ -47,6 +47,6 @@ public String toString()
     { return "%s[oldValue=%s; newValue=%s]".formatted(getClass()
                                            .getName(), oldValue, newValue); }
 
-// Кінець класу JDropZonePanelBeanInfo ========================================
+// Кінець класу JDropZonePanelEvent ===========================================
 
 }

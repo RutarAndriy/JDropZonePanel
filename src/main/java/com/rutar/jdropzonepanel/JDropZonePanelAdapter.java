@@ -10,13 +10,58 @@ public class JDropZonePanelAdapter implements JDropZonePanelListener {
 // ============================================================================
 
 @Override
-public void smileTypeChange (JDropZonePanelEvent evt) {}
+public void enableDaDChange (JDropZonePanelEvent evt) { }
 
 @Override
-public void smileWidthChange (JDropZonePanelEvent evt) {}
+public void dragSimulateChange (JDropZonePanelEvent evt) { }
 
 @Override
-public void lineWidthChange (JDropZonePanelEvent evt) {}
+public void enableAntialiasChange (JDropZonePanelEvent evt) { }
+
+@Override
+public void firstLinesTypeDrawChange (JDropZonePanelEvent evt) { }
+
+@Override
+public void secondtLinesTypeDrawChange (JDropZonePanelEvent evt) { }
+
+@Override
+public void firstLinesTypeColorChange (JDropZonePanelEvent evt) { }
+
+@Override
+public void secondLinesTypeColorChange (JDropZonePanelEvent evt) { }
+
+@Override
+public void firstLinesTypeStrokeChange (JDropZonePanelEvent evt) { }
+
+@Override
+public void secondLinesTypeStrokeChange (JDropZonePanelEvent evt) { }
+
+@Override
+public void activeBorderChange (JDropZonePanelEvent evt) { }
+
+@Override
+public void passiveBorderChange (JDropZonePanelEvent evt) { }
+
+@Override
+public void linesStepChange (JDropZonePanelEvent evt) { }
+
+@Override
+public void linesIndentChange (JDropZonePanelEvent evt) { }
+
+@Override
+public void extraTypeChange (JDropZonePanelEvent evt) { }
+
+@Override
+public void extraLabelTextChange (JDropZonePanelEvent evt) { }
+
+@Override
+public void extraButtonTextChange (JDropZonePanelEvent evt) { }
+
+@Override
+public void extraAutoEditTextChange (JDropZonePanelEvent evt) {}
+
+@Override
+public void extraIndentChange (JDropZonePanelEvent evt) { }
 
 // Кінець класу JDropZonePanelAdapter =========================================
 

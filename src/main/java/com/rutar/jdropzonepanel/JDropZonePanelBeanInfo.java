@@ -4,6 +4,7 @@ import java.io.*;
 import java.awt.*;
 import java.util.*;
 import java.beans.*;
+import java.awt.dnd.*;
 import javax.imageio.*;
 
 import static java.beans.BeanInfo.*;
@@ -29,10 +30,10 @@ private final ArrayList<Object> valuesList = new ArrayList<>();
 
 @Override
 public BeanDescriptor getBeanDescriptor()
-    { if (beanDescriptor == null)
-           { beanDescriptor = new BeanDescriptor(JDropZonePanel.class);
-             beanDescriptor.setValue("isContainer", Boolean.FALSE); }
-      return beanDescriptor; }
+  { if (beanDescriptor == null)
+         { beanDescriptor = new BeanDescriptor(JDropZonePanel.class);
+           beanDescriptor.setValue("isContainer", Boolean.FALSE); }
+    return beanDescriptor; }
 
 // ============================================================================
 /// Повернення масиву властивостей доступних для JavaBeans-компонента
@@ -51,12 +52,10 @@ try {
 
 PropertyDescriptor[] descriptors = Introspector.getBeanInfo(parentClass)
                                                .getPropertyDescriptors();
-// properties.addAll(Arrays.asList(descriptors));
 
-for (var descriptor : descriptors) {
-    descriptor.setPreferred(false);
-    properties.add(descriptor);
-}
+for (var descriptor : descriptors)
+  { descriptor.setPreferred(false);
+    properties.add(descriptor); }
 
 // ............................................................................
 // Додавання нових властивостей та задання їх пріоритетності
@@ -70,29 +69,146 @@ for (var descriptor : descriptors) {
 // setBound()     - якщо true, генерує подію PropertyChange
 // setPreferred() - якщо true, властивість попадає в список улюблених
 
-// Тип усмішки
-property = new PropertyDescriptor("smile", JDropZonePanel.class,
-                                  "isSmile", "setSmile");
+// Доступність перетягування
+property = new PropertyDescriptor("enableDaD", JDropZonePanel.class,
+                                  "isDaDEnable", "setDaDEnable");
 property.setBound(true);
 property.setPreferred(true);
 properties.add(property);
 
-// Ширина усмішки
-property = new PropertyDescriptor("smileWidth", JDropZonePanel.class,
-                                  "getSmileWidth", "setSmileWidth");
+// Симулювання перетягування
+property = new PropertyDescriptor("dragSimulate", JDropZonePanel.class,
+                                  "isDragSimulate", "setDragSimulate");
 property.setBound(true);
 property.setPreferred(true);
 properties.add(property);
 
-// Товщина ліній
-property = new PropertyDescriptor("lineWidth", JDropZonePanel.class,
-                                  "getLineWidth", "setLineWidth");
+// Згладжування ліній
+property = new PropertyDescriptor("enableAntialias", JDropZonePanel.class,
+                                  "isAntialias", "setAntialias");
 property.setBound(true);
 property.setPreferred(true);
-addToValuesList("THIN",   LINE_WIDTH_THIN, "JBiba.LINE_WIDTH_THIN");
-addToValuesList("NORMAL", LINE_WIDTH_NORM, "JBiba.LINE_WIDTH_NORM");
-addToValuesList("WIDE",   LINE_WIDTH_WIDE, "JBiba.LINE_WIDTH_WIDE");
+properties.add(property);
+
+// Промальовування ліній першого типу
+property = new PropertyDescriptor("firstLinesTypeDraw", JDropZonePanel.class,
+                                  "isFirstLinesTypeDraw",
+                                  "setFirstLinesTypeDraw");
+property.setBound(true);
+property.setPreferred(true);
+properties.add(property);
+
+// Промальовування ліній другого типу
+property = new PropertyDescriptor("secondLinesTypeDraw", JDropZonePanel.class,
+                                  "isSecondLinesTypeDraw",
+                                  "setSecondLinesTypeDraw");
+property.setBound(true);
+property.setPreferred(true);
+properties.add(property);
+
+// Колір ліній першого типу
+property = new PropertyDescriptor("firstLinesTypeColor", JDropZonePanel.class,
+                                  "getFirstLinesTypeColor",
+                                  "setFirstLinesTypeColor");
+property.setBound(true);
+property.setPreferred(true);
+properties.add(property);
+
+// Колір ліній другого типу
+property = new PropertyDescriptor("secondLinesTypeColor", JDropZonePanel.class,
+                                  "getSecondLinesTypeColor",
+                                  "setSecondLinesTypeColor");
+property.setBound(true);
+property.setPreferred(true);
+properties.add(property);
+
+// Штрихування ліній першого типу
+property = new PropertyDescriptor("firstLinesTypeStroke", JDropZonePanel.class,
+                                  "getFirstLinesTypeStroke",
+                                  "setFirstLinesTypeStroke");
+property.setBound(true);
+property.setPreferred(true);
+properties.add(property);
+
+// Штрихування ліній другого типу
+property = new PropertyDescriptor("secondLinesTypeStroke", JDropZonePanel.class,
+                                  "getSecondLinesTypeStroke",
+                                  "setSecondLinesTypeStroke");
+property.setBound(true);
+property.setPreferred(true);
+properties.add(property);
+
+// Активна рамка
+property = new PropertyDescriptor("borderActive", JDropZonePanel.class,
+                                  "getActiveBorder", "setActiveBorder");
+property.setBound(true);
+property.setPreferred(true);
+properties.add(property);
+
+// Неактивна рамка
+property = new PropertyDescriptor("borderPassive", JDropZonePanel.class,
+                                  "getPassiveBorder", "setPassiveBorder");
+property.setBound(true);
+property.setPreferred(true);
+properties.add(property);
+
+// Крок промальовування ліній
+property = new PropertyDescriptor("linesStep", JDropZonePanel.class,
+                                  "getLinesStep", "setLinesStep");
+property.setBound(true);
+property.setPreferred(true);
+properties.add(property);
+
+// Відступи ліній по краях компонента
+property = new PropertyDescriptor("linesIndent", JDropZonePanel.class,
+                                  "getLinesIndent", "setLinesIndent");
+property.setBound(true);
+property.setPreferred(true);
+properties.add(property);
+
+// Тип допоміжниї елементів
+property = new PropertyDescriptor("extraType", JDropZonePanel.class,
+                                  "getExtraType", "setExtraType");
+property.setBound(true);
+property.setPreferred(true);
+addToValuesList("EXTRA_TYPE_TEXT_AND_BUTTON", EXTRA_TYPE_TEXT_AND_BUTTON,
+                "JDropZonePanel.EXTRA_TYPE_TEXT_AND_BUTTON");
+addToValuesList("EXTRA_TYPE_TEXT_ONLY",       EXTRA_TYPE_TEXT_ONLY,
+                "JDropZonePanel.EXTRA_TYPE_TEXT_ONLY");
+addToValuesList("EXTRA_TYPE_BUTTON_ONLY",     EXTRA_TYPE_BUTTON_ONLY,
+                "JDropZonePanel.EXTRA_TYPE_BUTTON_ONLY");
+addToValuesList("EXTRA_TYPE_NONE",            EXTRA_TYPE_NONE,
+                "JDropZonePanel.EXTRA_TYPE_NONE");
 property.setValue("enumerationValues", getValuesList());
+properties.add(property);
+
+// Текст інформаційної мікти
+property = new PropertyDescriptor("extraLabelText", JDropZonePanel.class,
+                                  "getExtraLabelText", "setExtraLabelText");
+property.setBound(true);
+property.setPreferred(true);
+properties.add(property);
+
+// Текст кнопки вибору файлів
+property = new PropertyDescriptor("extraButtonText", JDropZonePanel.class,
+                                  "getExtraButtonText", "setExtraButtonText");
+property.setBound(true);
+property.setPreferred(true);
+properties.add(property);
+
+// Авторедагування тексту кнопки вибору файлів
+property = new PropertyDescriptor("extraAutoEditText", JDropZonePanel.class,
+                                  "getExtraAutoEditText",
+                                  "setExtraAutoEditText");
+property.setBound(true);
+property.setPreferred(true);
+properties.add(property);
+
+// Зовнішні відступи допоміжних елементів
+property = new PropertyDescriptor("extraIndent", JDropZonePanel.class,
+                                  "getExtraIndent", "setExtraIndent");
+property.setBound(true);
+property.setPreferred(true);
 properties.add(property);
 
 }
@@ -136,17 +252,47 @@ eventSets.addAll(Arrays.asList(descriptors));
 // f - назва метода, який видаляє прослуховувача
 
 // JDropZonePanelListener
+methods = new String[] { "enableDaDChange",
+                         "dragSimulateChange",
+                         "enableAntialiasChange",
+                         "firstLinesTypeDrawChange",
+                         "secondtLinesTypeDrawChange",
+                         "firstLinesTypeColorChange",
+                         "secondLinesTypeColorChange",
+                         "firstLinesTypeStrokeChange",
+                         "secondLinesTypeStrokeChange",
+                         "activeBorderChange",
+                         "passiveBorderChange",
+                         "linesStepChange",
+                         "linesIndentChange",
+                         "extraTypeChange",
+                         "extraLabelTextChange",
+                         "extraButtonTextChange",
+                         "extraAutoEditTextChange",
+                         "extraIndentChange" };
 
-methods = new String[] { "smileTypeChange",
-                         "smileWidthChange",
-                         "lineWidthChange" };
 eventSet = new EventSetDescriptor(JDropZonePanel.class,
-                                  "JDropZonePanelListener",
+                                  "JDroppablePanelListener",
                                   JDropZonePanelListener.class, methods,
-                                  "addJDropZonePanelListener",
-                                  "removeJDropZonePanelListener");
+                                  "addJDroppablePanelListener",
+                                  "removeJDroppablePanelListener");
+
 eventSets.add(eventSet);
-  
+
+// DropTargetListener
+methods = new String[] { "dragEnter",
+                         "dragExit",
+                         "dragOver",
+                         "drop" };
+
+eventSet = new EventSetDescriptor(JDropZonePanel.class,
+                                  "DropTargetListener",
+                                  DropTargetListener.class, methods,
+                                  "addDropTargetListener",
+                                  "removeDropTargetListener");
+
+eventSets.add(eventSet);
+
 }
 
 catch (IntrospectionException _) { }
@@ -194,18 +340,18 @@ private Image loadIcon (int size) {
 /// @param code Java-код, який IDE буде вставляти у setter-метод
 
 private void addToValuesList (String name, Object value, String code)
-    { valuesList.add(name);
-      valuesList.add(value);
-      valuesList.add(code); }
+  { valuesList.add(name);
+    valuesList.add(value);
+    valuesList.add(code); }
 
 // ============================================================================
 /// Повернення масиву перелічених значень та очищення списку
 /// @return масив перелічених значень
 
 private Object[] getValuesList()
-    { Object[] result = valuesList.toArray();
-      valuesList.clear();
-      return result; }
+  { Object[] result = valuesList.toArray();
+    valuesList.clear();
+    return result; }
 
 // Кінець класу JDropZonePanelBeanInfo ========================================
 
