@@ -13,7 +13,7 @@
 - Додаємо JavaBeans-компонент \
 `Pallete` > `Beans` > `Choose Bean`
 - У полі 'Class Name' вводимо назву класу: \
-`com.rutar.jdroppablepanel.JDroppablePanel`
+`com.rutar.jdropzonepanel.JDropZonePanel`
 - Перетягуємо компонент на форму/діалогове вікно
 - Налаштовуємо властивості компонента через меню 'Properties'
 </details>
