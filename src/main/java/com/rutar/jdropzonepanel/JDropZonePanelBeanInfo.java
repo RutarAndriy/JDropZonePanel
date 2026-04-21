@@ -280,7 +280,8 @@ eventSet = new EventSetDescriptor(JDropZonePanel.class,
 eventSets.add(eventSet);
 
 // DropTargetListener
-methods = new String[] { "dragEnter",
+methods = new String[] { "dropActionChanged",
+                         "dragEnter",
                          "dragExit",
                          "dragOver",
                          "drop" };
