@@ -49,6 +49,11 @@
   <SubComponents>
     <Component class="com.rutar.jdropzonepanel.JDropZonePanel" name="dzp_main">
       <Events>
+        <EventHandler event="dropActionChanged" listener="java.awt.dnd.DropTargetListener" parameters="java.awt.dnd.DropTargetDragEvent" handler="onTargetDrugEvent"/>
+        <EventHandler event="dragEnter" listener="java.awt.dnd.DropTargetListener" parameters="java.awt.dnd.DropTargetDragEvent" handler="onTargetDrugEvent"/>
+        <EventHandler event="dragExit" listener="java.awt.dnd.DropTargetListener" parameters="java.awt.dnd.DropTargetEvent" handler="onTargetEvent"/>
+        <EventHandler event="dragOver" listener="java.awt.dnd.DropTargetListener" parameters="java.awt.dnd.DropTargetDragEvent" handler="onTargetDrugEvent"/>
+        <EventHandler event="drop" listener="java.awt.dnd.DropTargetListener" parameters="java.awt.dnd.DropTargetDropEvent" handler="onDropEvent"/>
         <EventHandler event="enableDaDChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>
         <EventHandler event="dragSimulateChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>
         <EventHandler event="enableAntialiasChange" listener="com.rutar.jdropzonepanel.JDropZonePanelListener" parameters="com.rutar.jdropzonepanel.JDropZonePanelEvent" handler="onPropertyChange"/>

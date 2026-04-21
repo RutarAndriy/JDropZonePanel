@@ -3,8 +3,8 @@ package com.rutar.jdropzonepanel;
 import java.io.*;
 import java.awt.*;
 import java.util.*;
-import java.beans.*;
 import javax.swing.*;
+import java.awt.dnd.*;
 import javax.imageio.*;
 import java.awt.event.*;
 import java.awt.image.*;
@@ -223,6 +223,23 @@ private void initAppIcons() {
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     setTitle("JDropZonePanel Demo");
 
+    dzp_main.addDropTargetListener(new DropTargetListener() {
+      public void dropActionChanged(DropTargetDragEvent evt) {
+        onTargetDrugEvent(evt);
+      }
+      public void dragEnter(DropTargetDragEvent evt) {
+        onTargetDrugEvent(evt);
+      }
+      public void dragExit(DropTargetEvent evt) {
+        onTargetEvent(evt);
+      }
+      public void dragOver(DropTargetDragEvent evt) {
+        onTargetDrugEvent(evt);
+      }
+      public void drop(DropTargetDropEvent evt) {
+        onDropEvent(evt);
+      }
+    });
     dzp_main.addJDroppablePanelListener(new JDropZonePanelListener() {
       public void enableDaDChange(JDropZonePanelEvent evt) {
         onPropertyChange(evt);
@@ -651,6 +668,18 @@ private void initAppIcons() {
   private void onPropertyChange(JDropZonePanelEvent evt) {//GEN-FIRST:event_onPropertyChange
     IO.println(evt);
   }//GEN-LAST:event_onPropertyChange
+
+  private void onTargetDrugEvent(DropTargetDragEvent evt) {//GEN-FIRST:event_onTargetDrugEvent
+    IO.println(evt);
+  }//GEN-LAST:event_onTargetDrugEvent
+
+  private void onTargetEvent(DropTargetEvent evt) {//GEN-FIRST:event_onTargetEvent
+    IO.println(evt);
+  }//GEN-LAST:event_onTargetEvent
+
+  private void onDropEvent(DropTargetDropEvent evt) {//GEN-FIRST:event_onDropEvent
+    IO.println(evt);
+  }//GEN-LAST:event_onDropEvent
 
 // ============================================================================
 /// Прослуховувач змін текстових полів введення
