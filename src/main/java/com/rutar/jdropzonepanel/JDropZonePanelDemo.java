@@ -191,15 +191,15 @@ private void initAppIcons() {
     lbl_linesIndent = new JLabel();
     sld_linesIndent = new JSlider();
     pnl_linesVisibility = new JPanel();
-    btn_fVisible = new JToggleButton();
-    btn_sVisible = new JToggleButton();
+    tbtn_fVisible = new JToggleButton();
+    tbtn_sVisible = new JToggleButton();
     pnl_linesColors = new JPanel();
     btn_fColor = new JButton();
     btn_sColor = new JButton();
     pnl_linesStrokes = new JPanel();
     btn_fStroke = new JButton();
     btn_sStroke = new JButton();
-    btn_antialias = new JToggleButton();
+    tbtn_antialias = new JToggleButton();
     sp_linesStrokes = new JSeparator();
     lbl_bordersWidth = new JLabel();
     sld_bordersWidth = new JSlider();
@@ -216,9 +216,9 @@ private void initAppIcons() {
     fld_labelText = new JTextField();
     fld_buttonText = new JTextField();
     sp_buttonText = new JSeparator();
-    btn_autoEditText = new JToggleButton();
-    btn_activeDaD = new JToggleButton();
-    btn_simulate = new JToggleButton();
+    tbtn_autoEditText = new JToggleButton();
+    tbtn_activeDaD = new JToggleButton();
+    tbtn_simulate = new JToggleButton();
 
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     setTitle("JDropZonePanel Demo");
@@ -295,6 +295,9 @@ private void initAppIcons() {
       public void extraIndentChange(JDropZonePanelEvent evt) {
         onPropertyChange(evt);
       }
+      public void selectedFilesChange(JDropZonePanelEvent evt) {
+        onSelectedFilesChange(evt);
+      }
     });
 
     lbl_linesStep.setHorizontalAlignment(SwingConstants.CENTER);
@@ -332,15 +335,15 @@ private void initAppIcons() {
 
     pnl_linesVisibility.setLayout(new GridLayout(1, 0, 3, 0));
 
-    btn_fVisible.setText("Лінії I типу ∅");
-    btn_fVisible.setActionCommand("fLineVisible");
-    btn_fVisible.addActionListener(this::onButtonPress);
-    pnl_linesVisibility.add(btn_fVisible);
+    tbtn_fVisible.setText("Лінії I типу ∅");
+    tbtn_fVisible.setActionCommand("fLineVisible");
+    tbtn_fVisible.addActionListener(this::onButtonPress);
+    pnl_linesVisibility.add(tbtn_fVisible);
 
-    btn_sVisible.setText("Лінії II типу ∅");
-    btn_sVisible.setActionCommand("sLineVisible");
-    btn_sVisible.addActionListener(this::onButtonPress);
-    pnl_linesVisibility.add(btn_sVisible);
+    tbtn_sVisible.setText("Лінії II типу ∅");
+    tbtn_sVisible.setActionCommand("sLineVisible");
+    tbtn_sVisible.addActionListener(this::onButtonPress);
+    pnl_linesVisibility.add(tbtn_sVisible);
 
     pnl_linesColors.setLayout(new GridLayout(1, 0, 3, 0));
 
@@ -366,9 +369,9 @@ private void initAppIcons() {
     btn_sStroke.addActionListener(this::onButtonPress);
     pnl_linesStrokes.add(btn_sStroke);
 
-    btn_antialias.setText("Згладити лінії візерунку");
-    btn_antialias.setActionCommand("antialias");
-    btn_antialias.addActionListener(this::onButtonPress);
+    tbtn_antialias.setText("Згладити лінії візерунку");
+    tbtn_antialias.setActionCommand("antialias");
+    tbtn_antialias.addActionListener(this::onButtonPress);
 
     lbl_bordersWidth.setHorizontalAlignment(SwingConstants.CENTER);
     lbl_bordersWidth.setText("Товщина рамок: 0px");
@@ -435,17 +438,17 @@ private void initAppIcons() {
     docTwo.putProperty("owner", fld_buttonText);
     docTwo.addDocumentListener(documentListener);
 
-    btn_autoEditText.setText("Автоматичне редагування тексту кнопки вибору файлів увімкнене");
-    btn_autoEditText.setActionCommand("autoEditText");
-    btn_autoEditText.addActionListener(this::onButtonPress);
+    tbtn_autoEditText.setText("Автоматичне редагування тексту кнопки вибору файлів увімкнене");
+    tbtn_autoEditText.setActionCommand("autoEditText");
+    tbtn_autoEditText.addActionListener(this::onButtonPress);
 
-    btn_activeDaD.setText("Перетягування доступне");
-    btn_activeDaD.setActionCommand("activeDaD");
-    btn_activeDaD.addActionListener(this::onButtonPress);
+    tbtn_activeDaD.setText("Перетягування доступне");
+    tbtn_activeDaD.setActionCommand("activeDaD");
+    tbtn_activeDaD.addActionListener(this::onButtonPress);
 
-    btn_simulate.setText("Імітувати перетягування");
-    btn_simulate.setActionCommand("simulate");
-    btn_simulate.addActionListener(this::onButtonPress);
+    tbtn_simulate.setText("Імітувати перетягування");
+    tbtn_simulate.setActionCommand("simulate");
+    tbtn_simulate.addActionListener(this::onButtonPress);
 
     GroupLayout pnl_controlLayout = new GroupLayout(pnl_control);
     pnl_control.setLayout(pnl_controlLayout);
@@ -465,16 +468,16 @@ private void initAppIcons() {
       .addComponent(lbl_extraGap, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
       .addComponent(sld_extraGap, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
       .addComponent(cb_extraType, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-      .addComponent(btn_simulate, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      .addComponent(tbtn_simulate, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
       .addComponent(fld_labelText)
       .addComponent(lbl_linesStep, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
       .addComponent(fld_buttonText)
-      .addComponent(btn_autoEditText, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      .addComponent(tbtn_autoEditText, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
       .addComponent(sp_buttonText)
-      .addComponent(btn_activeDaD, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      .addComponent(tbtn_activeDaD, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
       .addComponent(lbl_linesIndent, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
       .addComponent(sld_linesIndent, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-      .addComponent(btn_antialias, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      .addComponent(tbtn_antialias, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
     pnl_controlLayout.setVerticalGroup(pnl_controlLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
       .addGroup(pnl_controlLayout.createSequentialGroup()
@@ -496,7 +499,7 @@ private void initAppIcons() {
         .addGap(3, 3, 3)
         .addComponent(pnl_linesStrokes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         .addGap(3, 3, 3)
-        .addComponent(btn_antialias)
+        .addComponent(tbtn_antialias)
         .addGap(3, 3, 3)
         .addComponent(sp_linesStrokes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
@@ -522,11 +525,11 @@ private void initAppIcons() {
         .addGap(3, 3, 3)
         .addComponent(sp_buttonText, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         .addGap(3, 3, 3)
-        .addComponent(btn_autoEditText)
+        .addComponent(tbtn_autoEditText)
         .addGap(3, 3, 3)
-        .addComponent(btn_activeDaD)
+        .addComponent(tbtn_activeDaD)
         .addGap(3, 3, 3)
-        .addComponent(btn_simulate))
+        .addComponent(tbtn_simulate))
     );
 
     GroupLayout layout = new GroupLayout(getContentPane());
@@ -586,10 +589,10 @@ private void initAppIcons() {
     switch (evt.getActionCommand()) {
       // Видимість ліній першого типу
       case "fLineVisible" ->
-        dzp_main.setFirstLinesTypeDraw(!btn_fVisible.isSelected());
+        dzp_main.setFirstLinesTypeDraw(!tbtn_fVisible.isSelected());
       // Видимість ліній другого типу
       case "sLineVisible" ->
-        dzp_main.setSecondLinesTypeDraw(!btn_sVisible.isSelected());  
+        dzp_main.setSecondLinesTypeDraw(!tbtn_sVisible.isSelected());
       // Колір ліній першого типу
       case "fLineColor" -> 
         { var color = dzp_main.getFirstLinesTypeColor();
@@ -622,30 +625,30 @@ private void initAppIcons() {
           dzp_main.setPassiveBorder(getRandomBorder(border)); }
       // Згладжування ліній візерунку
       case "antialias" ->
-        { var selected = btn_antialias.isSelected();
+        { var selected = tbtn_antialias.isSelected();
           var text = selected ? "Лінії візерунку згладжуються" :
                                 "Згладити лінії візерунку";
           dzp_main.setAntialias(selected);
-          btn_antialias.setText(text); }
+          tbtn_antialias.setText(text); }
       // Автоматичне редагування тексту кнопки вибору файлів
       case "autoEditText" ->
-        { var selected = !btn_autoEditText.isSelected();
+        { var selected = !tbtn_autoEditText.isSelected();
           var text = "Автоматичне редагування тексту кнопки вибору "
                    + "файлів " + (selected ? "увімкнене" : "вимкнене");
           dzp_main.setExtraAutoEditText(selected);
-          btn_autoEditText.setText(text); }
+          tbtn_autoEditText.setText(text); }
       // Активація/деактивація перетягування
       case "activeDaD" ->
-        { var selected = !btn_activeDaD.isSelected();
+        { var selected = !tbtn_activeDaD.isSelected();
           dzp_main.setDaDEnable(selected);
-          btn_activeDaD.setText(selected ? "Перетягування доступне" :
-                                           "Перетягування недоступне"); }
+          tbtn_activeDaD.setText(selected ? "Перетягування доступне" :
+                                            "Перетягування недоступне"); }
       // Імітація drag-події
       case "simulate" ->
-        { var selected = btn_simulate.isSelected();
+        { var selected = tbtn_simulate.isSelected();
           dzp_main.setDragSimulate(selected);
-          btn_simulate.setText(selected ? "Перетягування імітується" :
-                                          "Імітувати перетягування"); } }
+          tbtn_simulate.setText(selected ? "Перетягування імітується" :
+                                           "Імітувати перетягування"); } }
   }//GEN-LAST:event_onButtonPress
 
   private void onExtraTypeSelect(ActionEvent evt) {//GEN-FIRST:event_onExtraTypeSelect
@@ -681,6 +684,13 @@ private void initAppIcons() {
     IO.println(evt);
   }//GEN-LAST:event_onDropEvent
 
+  private void onSelectedFilesChange(JDropZonePanelEvent evt) {//GEN-FIRST:event_onSelectedFilesChange
+    var oldValue = (File[]) evt.getOldValue();
+    var newValue = (File[]) evt.getNewValue();
+    IO.println("%s%n->%n%s".formatted(Arrays.toString(oldValue),
+                                      Arrays.toString(newValue)));
+  }//GEN-LAST:event_onSelectedFilesChange
+
 // ============================================================================
 /// Прослуховувач змін текстових полів введення
  
@@ -697,18 +707,12 @@ private final DocumentListener documentListener = new DocumentListener() {
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private JButton btn_aBorderColor;
   private JButton btn_aBorderStroke;
-  private JToggleButton btn_activeDaD;
-  private JToggleButton btn_antialias;
-  private JToggleButton btn_autoEditText;
   private JButton btn_fColor;
   private JButton btn_fStroke;
-  private JToggleButton btn_fVisible;
   private JButton btn_pBorderColor;
   private JButton btn_pBorderStroke;
   private JButton btn_sColor;
   private JButton btn_sStroke;
-  private JToggleButton btn_sVisible;
-  private JToggleButton btn_simulate;
   private JComboBox<String> cb_extraType;
   private JDropZonePanel dzp_main;
   private JTextField fld_buttonText;
@@ -732,6 +736,12 @@ private final DocumentListener documentListener = new DocumentListener() {
   private JSeparator sp_bordersStrokes;
   private JSeparator sp_buttonText;
   private JSeparator sp_linesStrokes;
+  private JToggleButton tbtn_activeDaD;
+  private JToggleButton tbtn_antialias;
+  private JToggleButton tbtn_autoEditText;
+  private JToggleButton tbtn_fVisible;
+  private JToggleButton tbtn_sVisible;
+  private JToggleButton tbtn_simulate;
   // End of variables declaration//GEN-END:variables
 
 // Кінець класу JDropZonePanelDemo ============================================

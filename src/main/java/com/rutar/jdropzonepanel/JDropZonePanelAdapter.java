@@ -63,6 +63,9 @@ public void extraAutoEditTextChange (JDropZonePanelEvent evt) {}
 @Override
 public void extraIndentChange (JDropZonePanelEvent evt) { }
 
+@Override
+public void selectedFilesChange (JDropZonePanelEvent evt) { }
+
 // Кінець класу JDropZonePanelAdapter =========================================
 
 }

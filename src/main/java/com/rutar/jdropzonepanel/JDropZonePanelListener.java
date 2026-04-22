@@ -117,6 +117,12 @@ public void extraAutoEditTextChange (JDropZonePanelEvent evt);
 
 public void extraIndentChange (JDropZonePanelEvent evt);
 
+// ============================================================================
+/// Зміна файлів, вибраних за допомогою кнопки вибору файлів
+/// @param evt подія типу JDropZonePanelEvent
+
+public void selectedFilesChange (JDropZonePanelEvent evt);
+
 // Кінець класу JDropZonePanelListener ========================================
 
 }

@@ -9,6 +9,7 @@ import javax.swing.border.*;
 
 import static java.awt.BasicStroke.*;
 import static java.awt.RenderingHints.*;
+import static javax.swing.JFileChooser.*;
 
 // ............................................................................
 /// Реалізація панелі, яка підтримує функцію перетягування даних
@@ -50,6 +51,9 @@ private String extraLabelText  = "Перетягніть будь-які фай�
 // Текст кнопки вибору файлів
 private String extraButtonText = "Натисніть цю кнопку для вибору файлів";
 
+// Діалогове вікно вибору файлів
+private final JFileChooser fileChooser = new JFileChooser();
+
 // ............................................................................
 
 /// Допоміжні елементи: текст і кнопка
@@ -64,7 +68,9 @@ public static final int EXTRA_TYPE_NONE = 3;
 // ============================================================================
 /// Конструктор за замовчуванням
 
-public JDropZonePanel() { initComponents(); }
+public JDropZonePanel()
+  { initComponents();
+    fileChooser.setMultiSelectionEnabled(true); }
 
 // ============================================================================
 /// Промальовування компонента
@@ -527,7 +533,8 @@ for (var lst : getListeners()) {
     case "extraLabelText"        -> lst.extraLabelTextChange(event);
     case "extraButtonText"       -> lst.extraButtonTextChange(event);
     case "extraAutoEditText"     -> lst.extraAutoEditTextChange(event);
-    case "extraIndent"           -> lst.extraIndentChange(event); } } }
+    case "extraIndent"           -> lst.extraIndentChange(event);
+    case "selectedFiles"         -> lst.selectedFilesChange(event); } } }
 
 // ============================================================================
 /// Інформування прослуховувачів про зміну конкретної властивості компонента
@@ -572,7 +579,7 @@ public static BasicStroke createBasicStroke (float width, float ... pattern)
     lbl_info.setText(extraLabelText);
 
     btn_select.setText(extraButtonText);
-    btn_select.addActionListener(this::onSelectFile);
+    btn_select.addActionListener(this::onSelectFiles);
 
     GroupLayout pnl_compLayout = new GroupLayout(pnl_comp);
     pnl_comp.setLayout(pnl_compLayout);
@@ -612,9 +619,16 @@ public static BasicStroke createBasicStroke (float width, float ... pattern)
 // ============================================================================
 /// Прослуховування кнопки вибору файлів
 
-  private void onSelectFile(ActionEvent evt) {//GEN-FIRST:event_onSelectFile
-    JOptionPane.showMessageDialog(this, "Вибір файлу");
-  }//GEN-LAST:event_onSelectFile
+  private void onSelectFiles(ActionEvent evt) {//GEN-FIRST:event_onSelectFiles
+
+    var oldValue = fileChooser.getSelectedFiles();
+
+    var result = fileChooser.showOpenDialog(this);
+    if (result != APPROVE_OPTION) { return; }
+
+    var selectedFiles = fileChooser.getSelectedFiles();
+    fireAll("selectedFiles", oldValue, selectedFiles);
+  }//GEN-LAST:event_onSelectFiles
 
 // ===========================================================================\
 /// Прослуховувач DaD-подій

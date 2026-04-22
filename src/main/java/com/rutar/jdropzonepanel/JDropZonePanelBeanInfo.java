@@ -269,7 +269,8 @@ methods = new String[] { "enableDaDChange",
                          "extraLabelTextChange",
                          "extraButtonTextChange",
                          "extraAutoEditTextChange",
-                         "extraIndentChange" };
+                         "extraIndentChange",
+                         "selectedFilesChange" };
 
 eventSet = new EventSetDescriptor(JDropZonePanel.class,
                                   "JDroppablePanelListener",
