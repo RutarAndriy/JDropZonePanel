@@ -31,8 +31,8 @@ private final ArrayList<Object> valuesList = new ArrayList<>();
 @Override
 public BeanDescriptor getBeanDescriptor()
   { if (beanDescriptor == null)
-         { beanDescriptor = new BeanDescriptor(JDropZonePanel.class);
-           beanDescriptor.setValue("isContainer", Boolean.FALSE); }
+      { beanDescriptor = new BeanDescriptor(JDropZonePanel.class);
+        beanDescriptor.setValue("isContainer", Boolean.FALSE); }
     return beanDescriptor; }
 
 // ============================================================================
@@ -313,10 +313,10 @@ public Image getIcon (int iconType) {
 
 return switch (iconType) {
 
-    case ICON_MONO_16x16, ICON_COLOR_16x16 -> loadIcon(16);
-    case ICON_MONO_32x32, ICON_COLOR_32x32 -> loadIcon(32);
+  case ICON_MONO_16x16, ICON_COLOR_16x16 -> loadIcon(16);
+  case ICON_MONO_32x32, ICON_COLOR_32x32 -> loadIcon(32);
 
-    default -> null;
+  default -> null;
 
 };
 }
@@ -327,9 +327,9 @@ return switch (iconType) {
 /// @return об'єкт типу Image
 
 private Image loadIcon (int size) {
-    
+
     String res = "icons/icon_%d.png".formatted(size);
-    
+
     try (InputStream stream = getClass().getResourceAsStream(res))
         { return ImageIO.read(stream); }
     catch (IOException _)

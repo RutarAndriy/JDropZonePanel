@@ -22,9 +22,9 @@ public static int JDROPZONEPANEL_EVENT = AWTEvent.RESERVED_ID_MAX + 331;
 /// @param newValue нове значення властивості
 
 public JDropZonePanelEvent (Object source, Object oldValue, Object newValue)
-    { super(source, JDROPZONEPANEL_EVENT);
-      this.oldValue = oldValue;
-      this.newValue = newValue; }
+  { super(source, JDROPZONEPANEL_EVENT);
+    this.oldValue = oldValue;
+    this.newValue = newValue; }
 
 // ============================================================================
 /// Повернення старого значення властивості компонента
@@ -44,8 +44,8 @@ public Object getNewValue() { return newValue; }
 
 @Override
 public String toString()
-    { return "%s[oldValue=%s; newValue=%s]".formatted(getClass()
-                                           .getName(), oldValue, newValue); }
+  { return "%s[oldValue=%s; newValue=%s]".formatted(getClass()
+                                         .getName(), oldValue, newValue); }
 
 // Кінець класу JDropZonePanelEvent ===========================================
 

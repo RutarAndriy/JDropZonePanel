@@ -70,7 +70,8 @@ public static final int EXTRA_TYPE_NONE = 3;
 
 public JDropZonePanel()
   { initComponents();
-    fileChooser.setMultiSelectionEnabled(true); }
+    fileChooser.setMultiSelectionEnabled(true);
+    fileChooser.setFileSelectionMode(FILES_AND_DIRECTORIES); }
 
 // ============================================================================
 /// Промальовування компонента

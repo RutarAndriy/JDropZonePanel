@@ -32,12 +32,8 @@ public JDropZonePanelDemo()
 /// Головний метод програми
 /// @param args масив параметрів запуску програми
 
-public static void main (String args[]) {
-
-    // Правила оформлення проектів описані тут:
-    // https://github.com/RutarAndriy/My_Coding_Rules
-
-    SwingUtilities.invokeLater(() ->
+public static void main (String args[])
+  { SwingUtilities.invokeLater(() ->
       { var window = new JDropZonePanelDemo();
         window.setLocationRelativeTo(null);
         window.setVisible(true);
@@ -225,19 +221,19 @@ private void initAppIcons() {
 
     dzp_main.addDropTargetListener(new DropTargetListener() {
       public void dropActionChanged(DropTargetDragEvent evt) {
-        onTargetDrugEvent(evt);
+        onDropTargetDragEvent(evt);
       }
       public void dragEnter(DropTargetDragEvent evt) {
-        onTargetDrugEvent(evt);
+        onDropTargetDragEvent(evt);
       }
       public void dragExit(DropTargetEvent evt) {
-        onTargetEvent(evt);
+        onDropTargetEvent(evt);
       }
       public void dragOver(DropTargetDragEvent evt) {
-        onTargetDrugEvent(evt);
+        onDropTargetDragEvent(evt);
       }
       public void drop(DropTargetDropEvent evt) {
-        onDropEvent(evt);
+        onFilesDrop(evt);
       }
     });
     dzp_main.addJDroppablePanelListener(new JDropZonePanelListener() {
@@ -672,17 +668,18 @@ private void initAppIcons() {
     IO.println(evt);
   }//GEN-LAST:event_onPropertyChange
 
-  private void onTargetDrugEvent(DropTargetDragEvent evt) {//GEN-FIRST:event_onTargetDrugEvent
+  private void onDropTargetDragEvent(DropTargetDragEvent evt) {//GEN-FIRST:event_onDropTargetDragEvent
     IO.println(evt);
-  }//GEN-LAST:event_onTargetDrugEvent
+  }//GEN-LAST:event_onDropTargetDragEvent
 
-  private void onTargetEvent(DropTargetEvent evt) {//GEN-FIRST:event_onTargetEvent
+  private void onDropTargetEvent(DropTargetEvent evt) {//GEN-FIRST:event_onDropTargetEvent
     IO.println(evt);
-  }//GEN-LAST:event_onTargetEvent
+  }//GEN-LAST:event_onDropTargetEvent
 
-  private void onDropEvent(DropTargetDropEvent evt) {//GEN-FIRST:event_onDropEvent
-    IO.println(evt);
-  }//GEN-LAST:event_onDropEvent
+  private void onFilesDrop(DropTargetDropEvent evt) {//GEN-FIRST:event_onFilesDrop
+    var files = JDropZonePanelUtils.getFiles(evt, true);
+    IO.println("%s".formatted(Arrays.toString(files)));
+  }//GEN-LAST:event_onFilesDrop
 
   private void onSelectedFilesChange(JDropZonePanelEvent evt) {//GEN-FIRST:event_onSelectedFilesChange
     var oldValue = (File[]) evt.getOldValue();
@@ -700,9 +697,9 @@ private final DocumentListener documentListener = new DocumentListener() {
     public void insertUpdate (DocumentEvent e) { updateExtraData(e); }
     @Override
     public void removeUpdate (DocumentEvent e) { updateExtraData(e); }
-    
     @Override
-    public void changedUpdate (DocumentEvent e) {} };
+    public void changedUpdate (DocumentEvent e) {}
+};
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private JButton btn_aBorderColor;
