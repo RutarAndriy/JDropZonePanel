@@ -13,96 +13,81 @@ import java.awt.datatransfer.*;
 public class JDropZonePanelUtils {
 
 // ============================================================================
-/// Повернення списку перетягнутих файлів та папок
-/// @param evt подія типу DropTargetDropEvent
-/// @return список перетягнутих файлів та папок
-
-public static File[] getDroppableFilesAndFolders (DropTargetDropEvent evt)
-  { return getDroppableFilesAndFolders(evt, false); }
-
-// ============================================================================
-/// Повернення списку перетягнутих файлів та папок
-/// @param evt подія типу DropTargetDropEvent
+/// Повернення списку перетягнутих/вибраних файлів та папок
+/// @param source об'єкт типу File[] або DropTargetDropEvent
 /// @param recursive якщо true - повернення підпапок та внутрішніх файлів
-/// @return список перетягнутих файлів та папок
+/// @return список перетягнутих/вибраних файлів та папок
 
-public static File[] getDroppableFilesAndFolders (DropTargetDropEvent evt,
-                                                  boolean recursive) {
+public static File[] getFilesAndFolders (Object source, boolean recursive) {
 
-    // Перевірка можливості отримати список перетягнутих файлів
-    if (!evt.isDataFlavorSupported(DataFlavor.javaFileListFlavor))
+    // Знінна для збереження списку файлів та папок
+    var result = new File[0];
+
+    // Якщо джерело null - повертаємо пустий масив
+    if (source == null)
       { return null; }
-    // Спроба отримати список перетягутих файлів
-    try {
-      // Знінна для збереження списку файлів та папок
-      var files = new File[0];
-      // Оброблення DaD-події
-      evt.acceptDrop(DnDConstants.ACTION_COPY);
-      // Отримання перетягнутих даних
-      var transferable = evt.getTransferable();
-      // Отримання категорій перетягнутих даних
-      var flavors = transferable.getTransferDataFlavors();
-      // Обробка категорій у циклі
-      for (var flavor : flavors)
-        { // Якщо категорія - список файлів, то зберігаємо результат
-          if (flavor.isFlavorJavaFileListType())
-            { files = ((List<File>) transferable.getTransferData(flavor))
-                                                .toArray(File[]::new);
-              break; } }
-      // Якщо true - рекурсивна обробка папок
-      if (recursive) { files = processRecursion(files); }
-      // Підтвердження обробки події
-      evt.dropComplete(true);
-      // Повернення результату
-      return files; }
-    // Якщо відбулася помилка - повертаємо null
-    catch (UnsupportedFlavorException | IOException _) { return null; }
-}
+    // Обробка масиву файлів
+    else if (source instanceof File[] files)
+      { // Обробляємо масив файлів та папок
+        return recursive ? processRecursion(files) : files; }
+    // Обробка об'єкту типу DropTargetDropEvent
+    else if (source instanceof DropTargetDropEvent evt)
+      { // Перевірка можливості отримати список перетягнутих файлів
+        if (!evt.isDataFlavorSupported(DataFlavor.javaFileListFlavor))
+          { return null; }
+        // Спроба отримати список перетягутих файлів
+        try {
+          // Оброблення DaD-події
+          evt.acceptDrop(DnDConstants.ACTION_COPY);
+          // Отримання перетягнутих даних
+          var transferable = evt.getTransferable();
+          // Отримання категорій перетягнутих даних
+          var flavors = transferable.getTransferDataFlavors();
+          // Обробка категорій у циклі
+          for (var flavor : flavors)
+            { // Якщо категорія - список файлів, то зберігаємо результат
+              if (flavor.isFlavorJavaFileListType())
+                { result = ((List<File>) transferable.getTransferData(flavor))
+                                                     .toArray(File[]::new);
+                  break; } }
+          // Якщо true - рекурсивна обробка папок
+          if (recursive) { result = processRecursion(result); }
+          // Підтвердження обробки події
+          evt.dropComplete(true);
+          // Повернення результату
+          return result; }
+        // Якщо відбулася помилка - повертаємо null
+        catch (UnsupportedFlavorException | IOException _) { return null; } }
+    // Непідтримуваний тип об'єкту - кидаємо виняток
+    else
+      { throw new IllegalArgumentException("Illegal argument: source"); } }
 
 // ============================================================================
-/// Повернення списку перетягнутих файлів
-/// @param evt подія типу DropTargetDropEvent
-/// @return список перетягнутих файлів
-
-public static File[] getDroppableFiles (DropTargetDropEvent evt)
-  { return filterResult(evt, true, false); }
-
-// ============================================================================
-/// Повернення списку перетягнутих файлів
-/// @param evt подія типу DropTargetDropEvent
+/// Повернення списку перетягнутих/вибраних файлів
+/// @param source об'єкт типу File[] або DropTargetDropEvent
 /// @param recursive якщо true - повернення внутрішніх файлів
-/// @return список перетягнутих файлів
+/// @return список перетягнутих/вибраних файлів
 
-public static File[] getDroppableFiles (DropTargetDropEvent evt,
-                                        boolean recursive)
-  { return filterResult(evt, true, recursive); }
-
-// ============================================================================
-/// Повернення списку перетягнутих папок
-/// @param evt подія типу DropTargetDropEvent
-/// @return список перетягнутих папок
-
-public static File[] getDroppableFolders (DropTargetDropEvent evt)
-  { return filterResult(evt, false, false); }
+public static File[] getFiles (Object source, boolean recursive)
+  { return filterResult(source, true, recursive); }
 
 // ============================================================================
-/// Повернення списку перетягнутих папок
-/// @param evt подія типу DropTargetDropEvent
+/// Повернення списку перетягнутих/вибраних папок
+/// @param source об'єкт типу File[] або DropTargetDropEvent
 /// @param recursive якщо true - повернення підпапок
-/// @return список перетягнутих папок
+/// @return список перетягнутих/вибраних папок
 
-public static File[] getDroppableFolders (DropTargetDropEvent evt,
-                                          boolean recursive)
-  { return filterResult(evt, false, recursive); }
+public static File[] getFolders (Object source, boolean recursive)
+  { return filterResult(source, false, recursive); }
 
 // ============================================================================
 /// Фільтрування списку перетягнутих файлів
 
-private static File[] filterResult (DropTargetDropEvent evt,
+private static File[] filterResult (Object source,
                                     boolean filterFiles, boolean recursive) {
     
     var result = new ArrayList<File>();
-    var files = getDroppableFilesAndFolders(evt, recursive);
+    var files = getFilesAndFolders(source, recursive);
     
     for (var file : files)
       { if ((filterFiles && file.isFile()) ||
