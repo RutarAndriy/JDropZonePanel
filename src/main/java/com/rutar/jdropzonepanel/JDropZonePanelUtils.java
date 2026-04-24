@@ -113,6 +113,10 @@ private static ArrayList<File> getSubfiles (File file) {
     if (file == null || !file.exists()) { return null; }
     
     var result = new ArrayList<File>();
+    
+    if (file.isFile()) { result.add(file);
+                         return result; }
+    
     var files = file.listFiles();
     if (files == null) { return result; }
     
