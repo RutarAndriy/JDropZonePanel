@@ -12,6 +12,7 @@ import javax.swing.text.*;
 import javax.swing.event.*;
 import javax.swing.border.*;
 
+import static javax.swing.JOptionPane.*;
 import static com.rutar.jdropzonepanel.JDropZonePanel.*;
 
 // ............................................................................
@@ -677,8 +678,10 @@ private void initAppIcons() {
   }//GEN-LAST:event_onDropTargetEvent
 
   private void onFilesDrop(DropTargetDropEvent evt) {//GEN-FIRST:event_onFilesDrop
-    var files = JDropZonePanelUtils.getFiles(evt, true);
+    var files = JDropZonePanelUtils.getFilesAndFolders(evt, false);
     IO.println("%s".formatted(Arrays.toString(files)));
+    showMessageDialog(this, "Було перетягнуто такі файли та папки:\n" +
+                             getFilesAsString(files), "Повідомлення", 1);
   }//GEN-LAST:event_onFilesDrop
 
   private void onSelectedFilesChange(JDropZonePanelEvent evt) {//GEN-FIRST:event_onSelectedFilesChange
@@ -686,7 +689,20 @@ private void initAppIcons() {
     var newValue = (File[]) evt.getNewValue();
     IO.println("%s%n->%n%s".formatted(Arrays.toString(oldValue),
                                       Arrays.toString(newValue)));
+    showMessageDialog(this, "Було вибрано такі файли та папки:\n" +
+                             getFilesAsString(newValue), "Повідомлення", 1);
   }//GEN-LAST:event_onSelectedFilesChange
+
+// ============================================================================
+/// Перетворення масиву файлів на рядок
+
+private String getFilesAsString (File[] files)
+  { var result = new StringBuilder();
+    for (File f : files)
+      { result.append(f)
+              .append(f.isDirectory() ? File.separator : "")
+              .append("\n"); }
+    return result.toString(); }
 
 // ============================================================================
 /// Прослуховувач змін текстових полів введення
